@@ -3,146 +3,150 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GlobalTrust Fund | Dashboard</title>
+    <title>Account Overview - National Financial</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-        <div class="container">
-            <div class="header-content">
-                <div class="logo">
-                    <i class="fas fa-university"></i>
-                    <span>GlobalTrust Fund</span>
-                </div>
-                <nav>
-                    <ul>
-                        <li><a href="dashboard.html" class="active">Dashboard</a></li>
-                        <li><a href="cards.html">Credit Cards</a></li>
-                        <li><a href="crypto.html">Crypto</a></li>
-                        <li><a href="transfer.html">Transfer</a></li>
-                        <li><a href="transactions.html">Transactions</a></li>
-                    </ul>
-                </nav>
-                <div class="user-info">
-                    <div class="user-avatar">CA</div>
-                    <span>Comas Anajulia</span>
-                    <a href="index.html" class="logout-btn">Logout</a>
+    <header class="main-header">
+        <div class="header-container">
+            <div class="header-brand">
+                <h1>National Financial</h1>
+                <span class="header-subtitle">Online Banking</span>
+            </div>
+            <div class="header-user">
+                <div class="user-welcome">Welcome, Anajulia</div>
+                <div class="user-actions">
+                    <a href="#" class="user-link">Profile & Settings</a>
+                    <a href="index.html" class="user-link">Sign Out</a>
                 </div>
             </div>
         </div>
     </header>
 
-    <main>
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="dashboard.html" class="nav-item active">Dashboard</a>
+            <a href="accounts.html" class="nav-item">Accounts</a>
+            <a href="transfer.html" class="nav-item">Transfer & Pay</a>
+            <a href="credit-cards.html" class="nav-item">Credit Cards</a>
+            <a href="transaction-history.html" class="nav-item">Transactions</a>
+            <a href="#" class="nav-item">Statements</a>
+            <a href="#" class="nav-item">Services</a>
+        </div>
+    </nav>
+
+    <main class="main-content">
         <div class="container">
             <div class="page-header">
-                <h1>Dashboard</h1>
-                <p>Welcome back, Anajulia. Here's your financial overview.</p>
+                <h1>Account Overview</h1>
+                <div class="last-login">Last login: Today, 9:42 AM</div>
             </div>
 
-            <div class="balance-card">
-                <div class="balance-label">Available Balance</div>
-                <div class="balance-amount">$215,308.12</div>
-                <div class="balance-details">
-                    <div class="balance-item">
-                        <span class="label">Cash Balance</span>
-                        <span class="value">$285,000.00</span>
+            <div class="alert-banner info">
+                <strong>Security Alert:</strong> We noticed a new device login. <a href="#">Review activity</a>
+            </div>
+
+            <div class="balance-summary">
+                <div class="total-balance">
+                    <div class="balance-label">Total Balance</div>
+                    <div class="balance-amount">$215,308.12</div>
+                    <div class="balance-details">
+                        <span>Available: $148,770.69</span>
+                        <span>Pending: $1,798.92</span>
                     </div>
-                    <div class="balance-item">
-                        <span class="label">Crypto Value</span>
-                        <span class="value">$148,770.69</span>
-                    </div>
+                </div>
+                <div class="balance-actions">
+                    <button class="btn-primary" onclick="location.href='transfer.html'">Transfer Money</button>
+                    <button class="btn-secondary">Pay Bills</button>
                 </div>
             </div>
 
-            <div class="quick-actions">
-                <a href="transfer.html" class="action-card">
-                    <i class="fas fa-exchange-alt"></i>
-                    <h3>Transfer Money</h3>
-                    <p>Send funds to other accounts</p>
-                </a>
-                <a href="crypto.html" class="action-card">
-                    <i class="fab fa-bitcoin"></i>
-                    <h3>Crypto Exchange</h3>
-                    <p>Buy and sell cryptocurrencies</p>
-                </a>
-                <a href="cards.html" class="action-card">
-                    <i class="far fa-credit-card"></i>
-                    <h3>My Cards</h3>
-                    <p>Manage your credit cards</p>
-                </a>
-                <div class="action-card">
-                    <i class="fas fa-chart-line"></i>
-                    <h3>Investments</h3>
-                    <p>View your portfolio</p>
+            <div class="accounts-section">
+                <h2>My Accounts</h2>
+                <div class="accounts-grid">
+                    <div class="account-card">
+                        <div class="account-header">
+                            <h3>Premium Checking</h3>
+                            <span class="account-number">•••• 4582</span>
+                        </div>
+                        <div class="account-balance">$125,430.85</div>
+                        <div class="account-details">
+                            <div class="detail">
+                                <span>Available Balance</span>
+                                <span>$125,430.85</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="account-card">
+                        <div class="account-header">
+                            <h3>High-Yield Savings</h3>
+                            <span class="account-number">•••• 7391</span>
+                        </div>
+                        <div class="account-balance">$215,818.07</div>
+                        <div class="account-details">
+                            <div class="detail">
+                                <span>Available Balance</span>
+                                <span>$215,818.07</span>
+                            </div>
+                            <div class="detail">
+                                <span>Interest Rate</span>
+                                <span>4.25% APY</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
             <div class="recent-transactions">
                 <div class="section-header">
                     <h2>Recent Transactions</h2>
-                    <a href="transactions.html">View All</a>
+                    <a href="transaction-history.html" class="view-all">View All</a>
                 </div>
                 <div class="transactions-list">
-                    <div class="transaction-item">
-                        <div class="transaction-info">
-                            <div class="transaction-icon income">
-                                <i class="fas fa-arrow-down"></i>
-                            </div>
-                            <div class="transaction-details">
-                                <h4>Sarvice Deposit</h4>
-                                <p>Sep 15, 2025 • From Employer Inc.</p>
-                            </div>
+                    <div class="transaction">
+                        <div class="transaction-icon debit">🏠</div>
+                        <div class="transaction-details">
+                            <div class="transaction-description">Mortgage Payment</div>
+                            <div class="transaction-meta">Checking • March 15, 2025</div>
                         </div>
-                        <div class="transaction-amount positive">+$270,500.00</div>
+                        <div class="transaction-amount">-$3,245.00</div>
                     </div>
-                    <div class="transaction-item">
-                        <div class="transaction-info">
-                            <div class="transaction-icon expense">
-                                <i class="fas fa-home"></i>
-                            </div>
-                            <div class="transaction-details">
-                                <h4>Mortgage Payment</h4>
-                                <p>Oct 6, 2025 • To City Bank</p>
-                            </div>
+                    <div class="transaction">
+                        <div class="transaction-icon credit">📥</div>
+                        <div class="transaction-details">
+                            <div class="transaction-description">Direct Deposit - Salary</div>
+                            <div class="transaction-meta">Checking • March 14, 2025</div>
                         </div>
-                        <div class="transaction-amount negative">-$41,200.00</div>
+                        <div class="transaction-amount credit">+$12,500.00</div>
                     </div>
-                    <div class="transaction-item">
-                        <div class="transaction-info">
-                            <div class="transaction-icon crypto">
-                                <i class="fab fa-bitcoin"></i>
-                            </div>
-                            <div class="transaction-details">
-                                <h4>Bitcoin Purchase</h4>
-                                <p>May 5, 2025 • Crypto Exchange</p>
-                            </div>
+                    <div class="transaction">
+                        <div class="transaction-icon debit">🛒</div>
+                        <div class="transaction-details">
+                            <div class="transaction-description">Amazon Marketplace</div>
+                            <div class="transaction-meta">Debit Card • March 12, 2025</div>
                         </div>
-                        <div class="transaction-amount negative">-$8,000.00</div>
+                        <div class="transaction-amount">-$24,000.67</div>
                     </div>
                 </div>
             </div>
         </div>
     </main>
 
-    <footer>
+    <footer class="main-footer">
         <div class="container">
             <div class="footer-content">
-                <div class="footer-section">
-                    <h3>GlobalTrust Fund</h3>
-                    <p>Your trusted partner in financial services since 1985.</p>
+                <p>Need help? Call us at 1-800-NATIONAL-FINANCIAL (1-800-637-4342)</p>
+                <div class="footer-links">
+                    <a href="#">Security Center</a>
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Use</a>
+                    <a href="#">Contact Us</a>
                 </div>
-                <div class="footer-section">
-                    <h3>Contact</h3>
-                    <p>24/7 Customer Support: 1-800-GTB-BANK</p>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 GlobalTrust Fund. All rights reserved. Member FDIC.</p>
             </div>
         </div>
     </footer>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
