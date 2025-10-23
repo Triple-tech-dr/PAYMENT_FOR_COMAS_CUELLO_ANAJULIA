@@ -3,62 +3,80 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GlobalTrust Fund | Secure Login</title>
+    <title>National Financial - Online Banking</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body class="login-page">
+    <div class="security-header">
+        <div class="container">
+            <span>🔒 Secure Server • 256-bit SSL Encryption</span>
+            <span>FDIC Insured • Equal Housing Lender</span>
+        </div>
+    </div>
+
     <div class="login-container">
-        <div class="login-header">
-            <div class="logo">
-                <i class="fas fa-university"></i>
-                <span>GlobalTrust Fund</span>
+        <div class="bank-branding">
+            <div class="bank-logo">
+                <h1>National Financial</h1>
+                <p>Member FDIC</p>
             </div>
-            <h1>Secure Online Banking</h1>
-            <p>Please enter your credentials to access your account</p>
         </div>
 
-        <div class="login-card">
+        <div class="login-box">
+            <div class="login-header">
+                <h2>Online Banking Sign In</h2>
+                <p>Enter your username and password</p>
+            </div>
+            
             <form id="loginForm">
                 <div class="form-group">
                     <label for="username">Username</label>
-                    <input type="text" id="username" class="form-control" placeholder="Enter your username" required>
+                    <input type="text" id="username" name="username" required placeholder="Enter your username">
                 </div>
 
                 <div class="form-group">
                     <label for="password">Password</label>
-                    <input type="password" id="password" class="form-control" placeholder="Enter your password" required>
+                    <input type="password" id="password" name="password" required placeholder="Enter your password">
                 </div>
 
-                <div class="form-group">
-                    <button type="submit" class="btn btn-block">Sign In</button>
-                </div>
-
-                <div class="login-options">
+                <div class="form-options">
                     <label class="checkbox">
-                        <input type="checkbox" id="rememberMe">
-                        <span class="checkmark"></span>
-                        Remember me
+                        <input type="checkbox" name="remember">
+                        <span>Remember username on this device</span>
                     </label>
-                    <a href="#" class="forgot-password">Forgot password?</a>
                 </div>
+
+                <button type="submit" class="btn-login">Sign In</button>
             </form>
+
+            <div class="login-links">
+                <a href="#" class="link">Forgot Username?</a>
+                <a href="#" class="link">Forgot Password?</a>
+                <a href="#" class="link">Enroll in Online Banking</a>
+            </div>
         </div>
 
-        <div class="security-notice">
-            <div class="security-header">
-                <i class="fas fa-shield-alt"></i>
-                <h3>Security Notice</h3>
+        <div class="security-features">
+            <div class="security-badge">
+                <div class="badge-icon">🛡️</div>
+                <div class="badge-text">
+                    <strong>24/7 Protection</strong>
+                    <span>MEMBER OF FDIC</span>
+                </div>
             </div>
-            <p>Your security is our priority. We use industry-standard encryption to protect your data.</p>
-            <ul>
-                <li>Never share your login credentials</li>
-                <li>Always log out after your session</li>
-                <li>Enable two-factor authentication</li>
-            </ul>
         </div>
+
+        <footer class="login-footer">
+            <div class="footer-links">
+                <a href="#">Privacy & Security</a>
+                <a href="#">Terms & Conditions</a>
+                <a href="#">Contact Us</a>
+                <a href="#">Site Map</a>
+            </div>
+            <p class="copyright">©️ 2025 National Financial. All rights reserved.</p>
+        </footer>
     </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
