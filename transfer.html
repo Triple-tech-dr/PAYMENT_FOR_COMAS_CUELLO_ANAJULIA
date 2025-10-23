@@ -3,210 +3,186 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GlobalTrust Fund | Transfer Funds</title>
+    <title>Transfer Funds - National Financial</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-        <div class="container">
-            <div class="header-content">
-                <div class="logo">
-                    <i class="fas fa-university"></i>
-                    <span>GlobalTrust Fund</span>
-                </div>
-                <nav>
-                    <ul>
-                        <li><a href="dashboard.html">Dashboard</a></li>
-                        <li><a href="cards.html">Credit Cards</a></li>
-                        <li><a href="crypto.html">Crypto</a></li>
-                        <li><a href="transfer.html" class="active">Transfer</a></li>
-                        <li><a href="transactions.html">Transactions</a></li>
-                    </ul>
-                </nav>
-                <div class="user-info">
-                    <div class="user-avatar">CA</div>
-                    <span>Comas Anajulia</span>
-                    <a href="index.html" class="logout-btn">Logout</a>
+    <header class="main-header">
+        <div class="header-container">
+            <div class="header-brand">
+                <h1>National Financial</h1>
+                <span class="header-subtitle">Online Banking</span>
+            </div>
+            <div class="header-user">
+                <div class="user-welcome">Welcome, Anajulia</div>
+                <div class="user-actions">
+                    <a href="#" class="user-link">Profile & Settings</a>
+                    <a href="index.html" class="user-link">Sign Out</a>
                 </div>
             </div>
         </div>
     </header>
 
-    <main>
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="dashboard.html" class="nav-item">Dashboard</a>
+            <a href="accounts.html" class="nav-item">Accounts</a>
+            <a href="transfer.html" class="nav-item active">Transfer & Pay</a>
+            <a href="credit-cards.html" class="nav-item">Credit Cards</a>
+            <a href="transaction-history.html" class="nav-item">Transactions</a>
+            <a href="#" class="nav-item">Statements</a>
+            <a href="#" class="nav-item">Services</a>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <!-- Message Overlay -->
+        <div id="messageOverlay" style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); z-index: 999;"></div>
+        
         <div class="container">
             <div class="page-header">
                 <h1>Transfer Funds</h1>
-                <p>Send money to other accounts or crypto wallets</p>
+                <p>Move money between your accounts or send to others</p>
             </div>
 
             <div class="transfer-container">
-                <div class="transfer-form">
-                    <form id="transferForm">
-                        <div class="form-group">
-                            <label for="transferType">Transfer Type</label>
-                            <select id="transferType" class="form-control">
-                                <option value="bank">Bank Transfer</option>
-                                <option value="crypto">Crypto Transfer</option>
-                            </select>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="fromAccount">From Account</label>
-                            <select id="fromAccount" class="form-control">
-                                <option value="checking">Checking Account (****4532)</option>
-                                <option value="savings">Savings Account (****7821)</option>
-                            </select>
-                        </div>
-
-                        <div id="bankTransferFields">
+                <form class="transfer-form" id="transferForm">
+                    <div class="form-section">
+                        <h3>Transfer Details</h3>
+                        
+                        <div class="form-row">
                             <div class="form-group">
-                                <label for="recipientName">Recipient Name</label>
-                                <input type="text" id="recipientName" class="form-control" placeholder="Enter recipient name">
-                            </div>
-                            <div class="form-group">
-                                <label for="recipientAccount">Recipient Account Number</label>
-                                <input type="text" id="recipientAccount" class="form-control" placeholder="Enter account number">
-                            </div>
-                            <div class="form-group">
-                                <label for="routingNumber">Routing Number</label>
-                                <input type="text" id="routingNumber" class="form-control" placeholder="Enter routing number">
-                            </div>
-                        </div>
-
-                        <div id="cryptoTransferFields" style="display: none;">
-                            <div class="form-group">
-                                <label for="cryptoType">Cryptocurrency</label>
-                                <select id="cryptoType" class="form-control">
-                                    <option value="btc">Bitcoin (BTC)</option>
-                                    <option value="eth">Ethereum (ETH)</option>
-                                    <option value="ltc">Litecoin (LTC)</option>
+                                <label for="fromAccount">From Account</label>
+                                <select id="fromAccount" required>
+                                    <option value="">Select funding account</option>
+                                    <option value="checking">Premium Checking (••••4582) - $215,308.12</option>
+                                    <option value="savings">High-Yield Savings (••••7391) - $148,770.69</option>
                                 </select>
                             </div>
+
                             <div class="form-group">
-                                <label for="walletAddress">Wallet Address</label>
-                                <input type="text" id="walletAddress" class="form-control" placeholder="Enter wallet address">
+                                <label for="amount">Amount</label>
+                                <div class="amount-input">
+                                    <span class="currency">$</span>
+                                    <input type="number" id="amount" placeholder="0.00" min="0.01" step="0.01" required>
+                                </div>
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label for="amount">Amount</label>
-                            <input type="number" id="amount" class="form-control" placeholder="0.00">
+                            <label for="transferType">Transfer Type</label>
+                            <select id="transferType" required>
+                                <option value="">Select transfer type</option>
+                                <option value="internal">Between My Accounts</option>
+                                <option value="external">Send to Another Bank</option>
+                                <option value="wire">Wire Transfer</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-section" id="externalDetails" style="display: none;">
+                        <h3>Recipient Bank Information</h3>
+                        
+                        <div class="form-group">
+                            <label for="recipientName">Recipient Name</label>
+                            <input type="text" id="recipientName" placeholder="Full name as it appears on bank account">
                         </div>
 
                         <div class="form-group">
-                            <label for="description">Description (Optional)</label>
-                            <input type="text" id="description" class="form-control" placeholder="Enter description">
+                            <label for="recipientBank">Bank Name</label>
+                            <input type="text" id="recipientBank" placeholder="Recipient's bank name">
                         </div>
 
-                        <button type="button" class="btn btn-block" id="initiateTransfer">Continue to Transfer Key</button>
-                    </form>
-                </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="routingNumber">Routing Number</label>
+                                <input type="text" id="routingNumber" placeholder="9-digit routing number" maxlength="9">
+                                <div class="input-help">Find this on your check or bank statement</div>
+                            </div>
 
-                <div class="transfer-info">
-                    <h3>Transfer Details</h3>
-                    <div class="info-item">
-                        <span class="label">Transfer Fee</span>
-                        <span class="value">$25.00</span>
-                    </div>
-                    <div class="info-item">
-                        <span class="label">Processing Time</span>
-                        <span class="value">1-2 Business Days</span>
-                    </div>
-                    <div class="info-item">
-                        <span class="label">Daily Limit</span>
-                        <span class="value">$50,000.00</span>
-                    </div>
-                    <div class="info-item">
-                        <span class="label">Transfer Key Fee</span>
-                        <span class="value">$500.00</span>
+                            <div class="form-group">
+                                <label for="accountNumber">Account Number</label>
+                                <input type="text" id="accountNumber" placeholder="Recipient's account number">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="accountType">Account Type</label>
+                            <select id="accountType">
+                                <option value="">Select account type</option>
+                                <option value="checking">Checking</option>
+                                <option value="savings">Savings</option>
+                            </select>
+                        </div>
                     </div>
 
-                    <div class="security-notice">
-                        <h4><i class="fas fa-shield-alt"></i> Security Notice</h4>
-                        <p>For security purposes, all transfers require a Transfer Key for completion. The Transfer Key will be sent to your registered mobile device.</p>
-                        <p><strong>Important:</strong> The transfer key is <strong>******</strong> </p>
+                    <div class="form-section">
+                        <h3>Security Verification</h3>
+                        
+                        <div class="security-notice">
+                            <div class="notice-icon">🔒</div>
+                            <div class="notice-content">
+                                <strong>Enhanced Security Required</strong>
+                                <p>For your protection, please enter your withdrawal security key to complete this transaction.</p>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="withdrawalKey">Withdrawal Security Key Purchase Fee: $1,000 </label>
+                            <input type="password" id="withdrawalKey" placeholder="Enter your 4-digit security key" maxlength="4" required>
+                            <div class="input-help">This is a special security key for fund transfers, different from your login password</div>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="button" class="btn-secondary" onclick="location.href='dashboard.html'">Cancel</button>
+                        <button type="submit" class="btn-primary">Complete Transfer</button>
+                    </div>
+                </form>
+
+                <div class="transfer-summary">
+                    <h3>Transfer Summary</h3>
+                    <div class="summary-details">
+                        <div class="summary-item">
+                            <span>Transfer From:</span>
+                            <span id="summaryFrom">-</span>
+                        </div>
+                        <div class="summary-item">
+                            <span>Transfer To:</span>
+                            <span id="summaryTo">-</span>
+                        </div>
+                        <div class="summary-item">
+                            <span>Amount:</span>
+                            <span id="summaryAmount">$0.00</span>
+                        </div>
+                        <div class="summary-item">
+                            <span>Processing:</span>
+                            <span>Immediate</span>
+                        </div>
+                        <div class="summary-item fee">
+                            <span>Fee:</span>
+                            <span class="no-fee">No fee</span>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </main>
 
-    <!-- Transfer Key Modal -->
-    <div class="modal" id="transferKeyModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3>Transfer Key Verification</h3>
-                <button class="close-modal">&times;</button>
-            </div>
-            <div class="modal-body">
-                <p>For security purposes, please enter the Transfer Key sent to your registered mobile device to complete this transaction.</p>
-                <div class="form-group">
-                    <label for="transferKey">Transfer Key</label>
-                    <input type="text" id="transferKey" class="form-control" placeholder="Enter 6-digit code" maxlength="6">
-                    <small class="form-text">Purchase The key To complete Transaction</small>
-                </div>
-                <div class="info-item">
-                    <span class="label">Transfer Key Fee</span>
-                    <span class="value">$500.00</span>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-secondary" id="cancelTransfer">Cancel</button>
-                <button class="btn" id="confirmTransfer">Confirm Transfer</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Success Modal -->
-    <div class="modal" id="successModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3>Transfer Successful</h3>
-                <button class="close-modal">&times;</button>
-            </div>
-            <div class="modal-body">
-                <div style="text-align: center; margin: 1rem 0;">
-                    <i class="fas fa-check-circle" style="font-size: 3rem; color: var(--success);"></i>
-                </div>
-                <p>Your transfer has been successfully processed. The funds should arrive at the destination within 1-2 business days.</p>
-                <div class="info-item">
-                    <span class="label">Transaction ID</span>
-                    <span class="value">GTB78543921</span>
-                </div>
-                <div class="info-item">
-                    <span class="label">Amount</span>
-                    <span class="value" id="successAmount">$0.00</span>
-                </div>
-                <div class="info-item">
-                    <span class="label">Recipient</span>
-                    <span class="value" id="successRecipient">N/A</span>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-block" id="closeSuccess">Done</button>
-            </div>
-        </div>
-    </div>
-
-    <footer>
+    <footer class="main-footer">
         <div class="container">
             <div class="footer-content">
-                <div class="footer-section">
-                    <h3>GlobalTrust Bank</h3>
-                    <p>Your trusted partner in financial services since 1985.</p>
+                <p>Need help? Call us at 1-800-NATIONAL-FINANCIAL (1-800-637-4342)</p>
+                <div class="footer-links">
+                    <a href="#">Security Center</a>
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Use</a>
+                    <a href="#">Contact Us</a>
                 </div>
-                <div class="footer-section">
-                    <h3>Contact</h3>
-                    <p>24/7 Customer Support: 1-800-GTB-BANK</p>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 GlobalTrust Fund. All rights reserved. Member FDIC.</p>
             </div>
         </div>
     </footer>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
