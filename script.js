@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const password = document.getElementById('password').value;
             
             // Updated credentials - Username: Trace, Password: adkins
-            if (username === 'Trace' && password === 'adkins') {
+            if (username === 'Comas' && password === 'anajulia') {
                 // Store login state
                 localStorage.setItem('userLoggedIn', 'true');
                 localStorage.setItem('username', username);
